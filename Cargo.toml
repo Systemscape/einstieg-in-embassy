@@ -1,0 +1,47 @@
+[package]
+name = "embassy-examples"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+defmt = "1.0.1"
+
+esp-hal = { version = "1.0.0", features = [
+    "esp32c3",
+    "defmt",
+    "requires-unstable",
+    "unstable",
+] }
+esp-rtos = { version = "0.2.0", features = ["esp32c3", "embassy", "defmt"] }
+esp-bootloader-esp-idf = { version = "0.4.0", features = ["esp32c3", "defmt"] }
+
+
+# Provide logging functionality
+esp-println = { version = "0.16.1", features = ["esp32c3", "defmt-espflash"] }
+
+esp-backtrace = { version = "0.18.1", features = [
+    "esp32c3",
+    "panic-handler",
+    "println",
+] }
+
+embassy-executor = "0.9.1"
+embassy-time = "0.5.0"
+esp-hal-smartled = { version = "0.17.0", features = ["esp32c3", "defmt"] }
+smart-leds = "0.4.0"
+static_cell = "2.1.1"
+
+[patch.crates-io]
+esp-hal-smartled = { git = "https://github.com/esp-rs/esp-hal-community", rev = "d9239ac49c7b383689fbbb1762db021e2a7a41a2" }
+
+[profile.dev]
+# Rust debug is too slow.
+# For debug builds always builds with some optimizatio
+opt-level = "s"
+
+[profile.release]
+debug = true
+debug-assertions = true
+lto = "fat"
+codegen-units = 1
