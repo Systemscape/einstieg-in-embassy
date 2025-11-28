@@ -1,0 +1,46 @@
+[package]
+name = "embassy-examples"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+
+esp-hal = { version = "1.0.0", features = [
+    "esp32c3",
+    "defmt",
+    "requires-unstable",
+    "unstable",
+] }
+esp-rtos = { version = "0.2.0", features = ["esp32c3", "embassy", "defmt"] }
+esp-bootloader-esp-idf = { version = "0.4.0", features = ["esp32c3", "defmt"] }
+
+# Provide logging functionality
+esp-println = { version = "0.16.1", features = ["esp32c3", "defmt-espflash"] }
+defmt = "1.0.1"
+
+esp-backtrace = { version = "0.18.1", features = [
+    "esp32c3",
+    "panic-handler",
+    "defmt",
+] }
+
+embassy-executor = "0.9.1"
+embassy-futures = { version = "0.1.2", features = ["defmt"] }
+embassy-sync = { version = "0.7.2", features = ["defmt"] }
+embassy-time = "0.5.0"
+embedded-io = { version = "0.7.1", features = ["defmt"] }
+static_cell = "2.1.1"
+
+icm42670 = "0.2.0"
+esp-hal-smartled = { version = "0.17.0", features = ["esp32c3", "defmt"] }
+smart-leds = "0.4.0"
+
+[patch.crates-io]
+esp-hal-smartled = { git = "https://github.com/esp-rs/esp-hal-community", rev = "d9239ac49c7b383689fbbb1762db021e2a7a41a2" }
+
+[profile.release]
+debug = true
+debug-assertions = true
+lto = "fat"
+codegen-units = 1
