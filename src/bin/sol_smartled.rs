@@ -68,8 +68,14 @@ async fn main(spawner: Spawner) {
 }
 
 #[embassy_executor::task]
-async fn run(mut _led: SmartLedsAdapterAsync<'static, BUFFER_SIZE>) {
-    info!("Changing LED color");
-    // TODO: Cycle the LED color between red, green and blue
-    // with a delay of 500ms
+async fn run(mut led: SmartLedsAdapterAsync<'static, BUFFER_SIZE>) {
+    loop {
+        for color in [RED, GREEN, BLUE] {
+            info!("Changing LED color");
+            led.write(brightness([color].into_iter(), 100))
+                .await
+                .unwrap();
+            Timer::after(Duration::from_millis(500)).await;
+        }
+    }
 }

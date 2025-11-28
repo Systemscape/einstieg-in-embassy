@@ -4,13 +4,12 @@
 use embassy_executor::Spawner;
 use embassy_time::{Duration, Timer};
 use esp_hal::{
-    gpio::{Io, Level, Output, OutputConfig},
+    gpio::{Level, Output, OutputConfig},
     interrupt::software::SoftwareInterruptControl,
     timer::timg::TimerGroup,
 };
 
 use defmt::info;
-
 use esp_backtrace as _;
 use esp_println as _;
 
@@ -31,9 +30,6 @@ async fn main(_spawner: Spawner) {
     let sw_int = SoftwareInterruptControl::new(peripherals.SW_INTERRUPT);
     let timg0 = TimerGroup::new(peripherals.TIMG0);
     esp_rtos::start(timg0.timer0, sw_int.software_interrupt0);
-
-    // Configure GPIO
-    let _io = Io::new(peripherals.IO_MUX);
 
     // LED is connected to GPIO7 on the ESP32-C3 Rust board
     let mut led = Output::new(peripherals.GPIO7, Level::Low, OutputConfig::default());
