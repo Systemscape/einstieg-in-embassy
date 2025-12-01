@@ -1,6 +1,12 @@
 # Workshop: Einstieg in Embassy auf dem ESE Kongress 2025
 
-Hier werden die Dateien für den Workshop "Einstieg in Embassy" hochgeladen.
+## Folien und weitere Infos
+
+- Folien inkl. Kontakdaten als PDF im Repository (hier)[2025-11-01_ESE_Embassy_upload.pdf]
+- Embassy Website: https://embassy.dev/
+- OnMCU – Remote-Zugriff auf echte Mikrocontroller in der Cloud: https://www.onmcu.com/
+- Kombiniertes Beispiel für SHT3 _und_ ICM42670 [hier](src/bin/shtc3_and_icm42670.rs) (benutzt `embedded-hal-bus` und `critical-section`)
+
 
 ---
 
