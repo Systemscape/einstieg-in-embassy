@@ -63,4 +63,6 @@ async fn main(_spawner: Spawner) {
     }
 
     // TODO: Spawn a task that lights up the User-LED when
+    // an acceleration or a gyro value of your choice
+    // exceeds a certain threshold.
 }

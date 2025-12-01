@@ -5,7 +5,6 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-
 esp-hal = { version = "1.0.0", features = [
     "esp32c3",
     "defmt",
