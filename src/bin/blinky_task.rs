@@ -47,6 +47,11 @@ async fn main(spawner: Spawner) {
 
 #[embassy_executor::task]
 async fn run(mut led: Output<'static>) {
+    // TODO: Instead of blinking by time, blink on a button press.
+    // The User Button (BOOT) is on GPIO 9
+    // And you can await the button falling edge, see
+    // https://docs.espressif.com/projects/rust/esp-hal/1.0.0/esp32c3/esp_hal/gpio/struct.Input.html#method.wait_for_falling_edge
+
     loop {
         info!("LED ON");
         led.set_high();
