@@ -17,9 +17,6 @@ use esp_println as _;
 
 esp_bootloader_esp_idf::esp_app_desc!();
 
-/// Main entry point for the blinky example
-///
-/// This example blinks the onboard LED (GPIO7) at 1Hz
 #[esp_rtos::main]
 async fn main(_spawner: Spawner) {
     info!("Embassy blinky example started!");

@@ -5,6 +5,7 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
+
 esp-hal = { version = "1.0.0", features = [
     "esp32c3",
     "defmt",
@@ -34,9 +35,13 @@ static_cell = "2.1.1"
 icm42670 = "0.2.0"
 esp-hal-smartled = { version = "0.17.0", features = ["esp32c3", "defmt"] }
 smart-leds = "0.4.0"
+shtcx = "1.0.0"
 
 [patch.crates-io]
 esp-hal-smartled = { git = "https://github.com/esp-rs/esp-hal-community", rev = "d9239ac49c7b383689fbbb1762db021e2a7a41a2" }
+
+[profile.dev]
+opt-level = "s"
 
 [profile.release]
 debug = true
