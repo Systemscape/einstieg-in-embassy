@@ -27,9 +27,6 @@ const BUFFER_SIZE: usize = buffer_size_async(1);
 /// Embassy Signal that can be signalled by one task and awaited by another
 static BUTTON_SIGNAL: Signal<CriticalSectionRawMutex, ()> = Signal::new();
 
-/// Main entry point for the blinky example
-///
-/// This example blinks the onboard LED (GPIO7) at 1Hz
 #[esp_rtos::main]
 async fn main(spawner: Spawner) {
     info!("Embassy blinky example started!");
